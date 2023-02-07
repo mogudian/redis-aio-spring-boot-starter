@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.mogudiandian.redis.aio.configuration.RedisClientConfiguration
