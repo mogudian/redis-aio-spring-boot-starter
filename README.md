@@ -44,6 +44,37 @@ redis.aio.cluster.nodes=xxx.xxx.xxx.com:23456,xxx.xxx.xxx.com:23567
 redis.aio.password=YOUR_PASSWORD
 redis.aio.timeout=60s
 ```
+- 4、按原有的方式使用
+
+```java
+import org.redisson.api.RedissonClient;
+import org.redisson.api.RLock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CacheService {
+    
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    
+    @Autowired
+    private RedissonClient redissonClient;
+    
+    public void doYourBiz() {
+        String value = stringRedisTemplate.opsForValue().get("YOUR:KEY");
+        // do something...
+        RLock lock = redissonClient.getLock("BIZ:UNIQUE:KEY");
+        try {
+            lock.lock();
+            // do something...
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
 
 ## 依赖三方库
 
