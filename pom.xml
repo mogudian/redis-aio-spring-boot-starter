@@ -11,7 +11,7 @@
     <groupId>com.mogudiandian</groupId>
     <artifactId>redis-aio-sping-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>redis-aio-sping-boot-starter</name>
+    <name>redis-aio-spring-boot-starter</name>
     <description>Redis All in One</description>
 
     <properties>
